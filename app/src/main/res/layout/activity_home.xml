@@ -19,6 +19,12 @@
             android:layout_height="wrap_content"
             android:text="subscription" />
 
+        <Button
+            android:id="@+id/refresh_Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Refresh" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/parkingSlots_recyclerView"
             android:layout_marginTop="20dp"
@@ -27,5 +33,13 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/logout_Button"
+        android:backgroundTint="@color/red"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout" />
 
 </RelativeLayout>

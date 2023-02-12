@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-    EditText token_editText;
+    EditText username_editText;
     EditText pin_editText;
     Button login_Button;
     DatabaseReference subAdminRef;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         subAdminRef = FirebaseDatabase.getInstance().getReference("Users");
 
-        token_editText = findViewById(R.id.token_editText);
+        username_editText = findViewById(R.id.username_editText);
         pin_editText = findViewById(R.id.pin_editText);
 
         login_Button = findViewById(R.id.login_Button);
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Boolean valid = true;
-                if (token_editText.getText().toString().isEmpty()){
-                    token_editText.setError("Enter email");
+                if (username_editText.getText().toString().isEmpty()){
+                    username_editText.setError("Enter email");
                     valid = false;
                 }
 
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if (valid){
-                    subAdminRef.child(token_editText.getText().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    subAdminRef.child(username_editText.getText().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                             if (snapshot.exists()){
                                 if (pin_editText.getText().toString().equals(snapshot.child("pin").getValue().toString())){
                                     Intent intent = new Intent(MainActivity.this,Home_activity.class);
-                                    UserDetails_class.getInstance().setToken(snapshot.getKey().toString());
+                                    UserDetails_class.getInstance().setUsername(snapshot.getKey().toString());
                                     UserDetails_class.getInstance().setName(snapshot.child("name").getValue().toString());
                                     UserDetails_class.getInstance().setParking(snapshot.child("parking").getValue().toString());
                                     UserDetails_class.getInstance().setPh_no(snapshot.child("ph_no").getValue().toString());
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
 
                             }else {
-                                Toast.makeText(MainActivity.this, "Invalid token!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Invalid Username!", Toast.LENGTH_SHORT).show();
                             }
                         }
 

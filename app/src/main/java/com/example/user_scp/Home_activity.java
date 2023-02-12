@@ -22,6 +22,8 @@ import java.util.List;
 public class Home_activity extends AppCompatActivity {
 
     Button subscription_Button;
+    Button refresh_Button;
+    Button logout_Button;
     DatabaseReference slotReference;
     DatabaseReference walletReference;
     RecyclerView parkingSlots_recyclerView;
@@ -60,6 +62,22 @@ public class Home_activity extends AppCompatActivity {
 
             }
         });
+
+        logout_Button = findViewById(R.id.logout_Button);
+        logout_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        refresh_Button = findViewById(R.id.refresh_Button);
+        refresh_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recreate();
+            }
+        });
+
 
         subscription_Button = findViewById(R.id.subscription_Button);
         subscription_Button.setOnClickListener(new View.OnClickListener() {

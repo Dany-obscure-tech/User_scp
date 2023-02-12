@@ -60,7 +60,7 @@ public class Subscription_activity extends AppCompatActivity {
 
         wallet_textView = findViewById(R.id.wallet_textView);
         databaseReference= FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("Wallet").child(UserDetails_class.getInstance().getToken()).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Wallet").child(UserDetails_class.getInstance().getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 wallet_textView.setText(snapshot.getValue().toString());
@@ -73,7 +73,7 @@ public class Subscription_activity extends AppCompatActivity {
             }
         });
 
-        databaseReference.child("Subscription").child(UserDetails_class.getInstance().getToken()).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Subscription").child(UserDetails_class.getInstance().getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.child("valid").getValue().toString().equals("0")){
@@ -116,17 +116,17 @@ public class Subscription_activity extends AppCompatActivity {
         oneDaySubscription_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getToken()).child("Duration").setValue("1 Day");
-                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getToken()).child("valid").setValue("1");
-                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getToken()).child("time").setValue(String.valueOf(date));
+                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getUsername()).child("Duration").setValue("1 Day");
+                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getUsername()).child("valid").setValue("1");
+                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getUsername()).child("time").setValue(String.valueOf(date));
                 wallet = wallet - 50;
-                databaseReference.child("Wallet").child(UserDetails_class.getInstance().getToken()).setValue(wallet);
+                databaseReference.child("Wallet").child(UserDetails_class.getInstance().getUsername()).setValue(wallet);
                 calendar.add(Calendar.DAY_OF_YEAR, 1);
                 dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
                 Date resultDate = calendar.getTime();
                 String dueDate  = dateFormat.format(resultDate);
 
-                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getToken()).child("due_date").setValue(String.valueOf(dueDate));
+                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getUsername()).child("due_date").setValue(String.valueOf(dueDate));
                 finish();
             }
         });
@@ -134,17 +134,17 @@ public class Subscription_activity extends AppCompatActivity {
         weekSubscription_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getToken()).child("Duration").setValue("week");
-                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getToken()).child("valid").setValue("1");
-                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getToken()).child("time").setValue(String.valueOf(date));
+                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getUsername()).child("Duration").setValue("week");
+                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getUsername()).child("valid").setValue("1");
+                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getUsername()).child("time").setValue(String.valueOf(date));
                 wallet = wallet - 200;
-                databaseReference.child("Wallet").child(UserDetails_class.getInstance().getToken()).setValue(wallet);
+                databaseReference.child("Wallet").child(UserDetails_class.getInstance().getUsername()).setValue(wallet);
                 calendar.add(Calendar.DAY_OF_YEAR, 7);
                 dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:MM:ss");
                 Date resultDate = calendar.getTime();
                 String dueDate  = dateFormat.format(resultDate);
 
-                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getToken()).child("due_date").setValue(String.valueOf(dueDate));
+                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getUsername()).child("due_date").setValue(String.valueOf(dueDate));
                 finish();
             }
         });
@@ -152,18 +152,18 @@ public class Subscription_activity extends AppCompatActivity {
         monthSubscription_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getToken()).child("Duration").setValue("month");
-                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getToken()).child("valid").setValue("1");
-                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getToken()).child("time").setValue(String.valueOf(date));
+                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getUsername()).child("Duration").setValue("month");
+                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getUsername()).child("valid").setValue("1");
+                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getUsername()).child("time").setValue(String.valueOf(date));
                 wallet = wallet - 500;
-                databaseReference.child("Wallet").child(UserDetails_class.getInstance().getToken()).setValue(wallet);
+                databaseReference.child("Wallet").child(UserDetails_class.getInstance().getUsername()).setValue(wallet);
 
                 calendar.add(Calendar.DAY_OF_YEAR, 30);
                 dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
                 Date resultDate = calendar.getTime();
                 String dueDate  = dateFormat.format(resultDate);
 
-                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getToken()).child("due_date").setValue(String.valueOf(dueDate));
+                databaseReference.child("Subscription").child(UserDetails_class.getInstance().getUsername()).child("due_date").setValue(String.valueOf(dueDate));
 
                 finish();
             }

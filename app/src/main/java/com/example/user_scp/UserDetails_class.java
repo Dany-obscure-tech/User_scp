@@ -7,7 +7,7 @@ class UserDetails_class {
 
     // Declaring a variable of type String
 
-    public String token;
+    public String username;
     public String name;
     public String parking;
     public String car_no;
@@ -21,12 +21,12 @@ class UserDetails_class {
 
     }
 
-    public String getToken() {
-        return token;
+    public String getUsername() {
+        return username;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {
