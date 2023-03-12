@@ -17,12 +17,15 @@
             android:id="@+id/subscription_Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:layout_marginBottom="10dp"
             android:text="subscription" />
 
         <Button
             android:id="@+id/refresh_Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
             android:text="Refresh" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -40,6 +43,8 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button"
+        style="@style/red_btn_style"
         android:text="Logout" />
 
 </RelativeLayout>
